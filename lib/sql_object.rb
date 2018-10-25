@@ -111,11 +111,7 @@ class SQLObject
   end
 
   def save
-    begin
-      self.update unless self.id.nil?
-    rescue
-      self.insert
-    end
+    self.id.nil? ? self.insert : self.update
   end
 
 end
